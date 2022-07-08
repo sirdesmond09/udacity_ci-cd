@@ -33,6 +33,16 @@ jobs:
             at: ~/
         - run: cat ~/output.txt
         - print_pipeline_id
+
+    try_on_fail:
+      <<: *defaults
+
+      steps:
+        - run:  exit 1
+        - run:
+            name: on error
+            command: echo "Hello Error!"
+            when: on_fail
             
 workflows:
   # Name the workflow "welcome"
@@ -43,3 +53,4 @@ workflows:
       - print_output_file:
           requires:
             - save_hello_world_output
+      - try_on_fail
