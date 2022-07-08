@@ -53,4 +53,6 @@ workflows:
       - print_output_file:
           requires:
             - save_hello_world_output
-      - try_on_fail
+      - try_on_fail:
+          requires:
+            - print_output_file
