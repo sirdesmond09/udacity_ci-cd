@@ -18,13 +18,15 @@ jobs:
         - run: echo world
 
     say_my_name:
-      environment:
-        first_name: Desmond
 
+      docker:
+        - image: cimg/base:2020.01
       steps:
-        - run: 
-          command: |
-            echo $first_name is the owner of this project
+        - checkout
+        - run:
+            name: "echo an env var that is part of our project"
+            command: |
+              echo $first_name
       
 workflows:
   # Name the workflow "welcome"
