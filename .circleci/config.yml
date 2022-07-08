@@ -16,9 +16,11 @@ jobs:
         - image: circleci/node:13.8.0
       steps:
         - run: echo world
+
     say_my_name:
       environment:
         first_name: Desmond
+
       steps:
         - run: 
           command: |
@@ -34,3 +36,4 @@ workflows:
       - print_world:
           requires:
             - print_hello
+      - say_my_name
